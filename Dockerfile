@@ -1,18 +1,36 @@
+# ====================================================================== #
+# Android SDK Docker Image
+# ====================================================================== #
+
 FROM openjdk:8
 
-ENV ANDROID_HOME="/opt/android-sdk-linux"
+# Author
+# ---------------------------------------------------------------------- #
+LABEL maintainer "dev@jdoneill.com"
+
+ENV ANDROID_HOME="/opt/android-sdk"
 ENV ANDROID_VERSION=29
 ENV ANDROID_BUILD_TOOLS_VERSION=29.0.2
+ENV KOTLIN_HOME /opt/kotlinc
+ENV _JAVA_OPTIONS -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap
+
+# download and install Kotlin compiler
+# https://github.com/JetBrains/kotlin/releases/latest
+ARG KOTLIN_VERSION=1.4.0
+RUN cd /opt && \
+    wget -q https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip && \
+    unzip *kotlin*.zip && \
+    rm *kotlin*.zip
 
 # Download Android SDK into $ANDROID_HOME
-# You can find URL to the current version at: https://developer.android.com/studio/index.html
+# You can find URL to the current version at: https://developer.android.com/studio#command-tools
+ARG ANDROID_SDK_VERSION=6514223
 RUN mkdir -p ${ANDROID_HOME} && \
-    cd ${ANDROID_HOME} && \
-    wget -q https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O android_tools.zip && \
-    unzip android_tools.zip && \
-    rm android_tools.zip
+    wget -q https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_VERSION}_latest.zip && \
+    unzip *tools*linux*.zip -d ${ANDROID_HOME} && \
+    rm *tools*linux*.zip
 
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+ENV PATH ${PATH}:${KOTLIN_HOME}/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
 
 # Accept Android SDK licenses
 RUN yes | sdkmanager --licenses
