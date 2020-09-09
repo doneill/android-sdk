@@ -26,6 +26,7 @@ RUN cd /opt && \
 # You can find URL to the current version at: https://developer.android.com/studio#command-tools
 ARG ANDROID_SDK_VERSION=6514223
 RUN mkdir -p ${ANDROID_HOME} && \
+    cd ${ANDROID_HOME} && \
     wget -q https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_VERSION}_latest.zip && \
     unzip *tools*linux*.zip -d ${ANDROID_HOME} && \
     rm *tools*linux*.zip
