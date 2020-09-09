@@ -24,12 +24,12 @@ RUN cd /opt && \
 
 # Download Android SDK into $ANDROID_HOME
 # You can find URL to the current version at: https://developer.android.com/studio#command-tools
-ARG ANDROID_SDK_VERSION=6514223
+ARG ANDROID_SDK_VERSION=4333796
 RUN mkdir -p ${ANDROID_HOME} && \
     cd ${ANDROID_HOME} && \
-    wget -q https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_VERSION}_latest.zip && \
-    unzip *tools*linux*.zip -d ${ANDROID_HOME} && \
-    rm *tools*linux*.zip
+    wget -q https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_VERSION}.zip -O android_tools.zip && \
+    unzip android_tools.zip && \
+    rm android_tools.zip
 
 ENV PATH ${PATH}:${KOTLIN_HOME}/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
 
