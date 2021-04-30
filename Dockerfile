@@ -2,7 +2,7 @@
 # Android SDK Docker Image
 # ====================================================================== #
 
-FROM openjdk:8
+FROM openjdk:11
 
 # Author
 # ---------------------------------------------------------------------- #
@@ -16,7 +16,7 @@ ENV _JAVA_OPTIONS -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForH
 
 # download and install Kotlin compiler
 # https://github.com/JetBrains/kotlin/releases/latest
-ARG KOTLIN_VERSION=1.4.0
+ARG KOTLIN_VERSION=1.4.32
 RUN cd /opt && \
     wget -q https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip && \
     unzip *kotlin*.zip && \
