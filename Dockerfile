@@ -24,7 +24,7 @@ RUN cd /opt && \
 
 # Download Android SDK into $ANDROID_HOME
 # You can find URL to the current version at: https://developer.android.com/studio#command-tools
-ARG ANDROID_SDK_VERSION=6858069_latest
+ARG ANDROID_SDK_VERSION="6858069_latest"
 RUN mkdir -p ${ANDROID_HOME} && \
     cd ${ANDROID_HOME} && \
     wget -q https://dl.google.com/android/repository/commandlinetools-${ANDROID_SDK_VERSION}.zip -O android_tools.zip && \
