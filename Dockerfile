@@ -12,7 +12,7 @@ ENV ANDROID_HOME="/opt/android-sdk"
 ENV ANDROID_VERSION=29
 ENV ANDROID_BUILD_TOOLS_VERSION=29.0.2
 ENV KOTLIN_HOME /opt/kotlinc
-ENV _JAVA_OPTIONS -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap
+# ENV _JAVA_OPTIONS -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap
 
 # download and install Kotlin compiler
 # https://github.com/JetBrains/kotlin/releases/latest
