@@ -27,7 +27,7 @@ RUN cd /opt && \
 ARG ANDROID_SDK_VERSION="6858069_latest"
 RUN mkdir -p ${ANDROID_HOME} && \
     cd ${ANDROID_HOME} && \
-    wget -q https://dl.google.com/android/repository/commandlinetools-${ANDROID_SDK_VERSION}.zip -O android_tools.zip && \
+    wget -q https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_VERSION}.zip -O android_tools.zip && \
     unzip android_tools.zip && \
     rm android_tools.zip
 
