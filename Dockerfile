@@ -8,6 +8,10 @@ FROM openjdk:11.0.6-slim
 # ---------------------------------------------------------------------- #
 LABEL maintainer "dev@jdoneill.com"
 
+RUN  apt-get update \
+  && apt-get install -y wget \
+  && rm -rf /var/lib/apt/lists/*
+
 ENV ANDROID_HOME="/opt/android-sdk"
 ENV ANDROID_VERSION=29
 ENV ANDROID_BUILD_TOOLS_VERSION=29.0.2
