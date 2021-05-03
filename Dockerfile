@@ -34,7 +34,7 @@ RUN mkdir -p ${ANDROID_HOME} && \
 
 # JAXB APIs removed from Java 11, Android sdkmanager requires it
 # Download jaxb
-RUN cd ${ANDROID_HOME}/lib && \
+RUN cd ${ANDROID_HOME}/tools/lib && \
     wget -q https://repo1.maven.org/maven2/com/sun/xml/bind/jaxb-ri/2.3.3/jaxb-ri-2.3.3.zip -O jaxb.zip && \
     unzip jaxb.zip "jaxb-ri/mod/*" && \
     rm jaxb.zip
