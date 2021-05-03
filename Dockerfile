@@ -12,7 +12,7 @@ ENV ANDROID_HOME="/opt/android-sdk"
 ENV ANDROID_VERSION=29
 ENV ANDROID_BUILD_TOOLS_VERSION=29.0.2
 ENV KOTLIN_HOME /opt/kotlinc
-ENV JAXB_HOME $ANDROID_HOME/lib/jaxb-ri/mod
+ENV JAXB_HOME $ANDROID_HOME/tools/lib/jaxb-ri/mod
 # ENV _JAVA_OPTIONS -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap
 
 # Download and install Kotlin compiler
