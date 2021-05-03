@@ -29,7 +29,8 @@ ARG ANDROID_SDK_VERSION="6858069_latest"
 RUN mkdir -p ${ANDROID_HOME} && \
     cd ${ANDROID_HOME} && \
     wget -q https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_VERSION}.zip -O android_tools.zip && \
-    unzip android_tools.zip && \
+    unzip android_tools.zip -d ./tmp && \
+    mv ./tmp/*/* . && \
     rm android_tools.zip
 
 # JAXB APIs removed from Java 11, Android sdkmanager requires it
