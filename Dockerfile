@@ -25,12 +25,11 @@ RUN cd /opt && \
 
 # Download Android SDK into $ANDROID_HOME
 # You can find URL to the current version at: https://developer.android.com/studio#command-tools
-ARG ANDROID_SDK_VERSION="6858069_latest"
+ARG ANDROID_SDK_VERSION="4333796"
 RUN mkdir -p ${ANDROID_HOME} && \
     cd ${ANDROID_HOME} && \
-    wget -q https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_VERSION}.zip -O android_tools.zip && \
-    unzip android_tools.zip -d ./tmp && \
-    mv ./tmp/*/* . && \
+    wget -q https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_VERSION}.zip -O android_tools.zip && \
+    unzip android_tools.zip && \
     rm android_tools.zip
 
 # JAXB APIs removed from Java 11, Android sdkmanager requires it
