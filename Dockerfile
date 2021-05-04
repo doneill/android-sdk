@@ -12,7 +12,7 @@ ENV ANDROID_HOME="/opt/android-sdk"
 ENV ANDROID_VERSION=29
 ENV ANDROID_BUILD_TOOLS_VERSION=29.0.2
 ENV KOTLIN_HOME /opt/kotlinc
-ENV JAXB_HOME $ANDROID_HOME/cmdline-tools/lib/jaxb-ri/mod
+#ENV JAXB_HOME $ANDROID_HOME/cmdline-tools/lib/jaxb-ri/mod
 ENV _JAVA_OPTIONS -XX:+UnlockExperimentalVMOptions
 
 # Download and install Kotlin compiler
@@ -41,7 +41,7 @@ RUN mkdir -p ${ANDROID_HOME} && \
 
 # ENV CLASSPATH ${CLASSPATH}:$JAXB_HOME/jakarta.activation.jar:$JAXB_HOME/jakarta.xml.bind-api.jar:$JAXB_HOME/jaxb-impl.jar
 
-ENV PATH ${PATH}:${KOTLIN_HOME}/bin:${ANDROID_HOME}/cmdline-tools:${ANDROID_HOME}/cmdline-tools/bin:${ANDROID_HOME}/platform-tools
+ENV PATH ${PATH}:${KOTLIN_HOME}/bin:${ANDROID_HOME}/cmdline-tools/latest:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools
 
 # Accept Android SDK licenses
 RUN yes | sdkmanager --licenses
