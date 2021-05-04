@@ -39,7 +39,7 @@ RUN mkdir -p ${ANDROID_HOME} && \
 #    unzip jaxb.zip "jaxb-ri/mod/*" && \
 #    rm jaxb.zip
 
-ENV CLASSPATH ${CLASSPATH}:$JAXB_HOME/jakarta.activation.jar:$JAXB_HOME/jakarta.xml.bind-api.jar:$JAXB_HOME/jaxb-impl.jar
+# ENV CLASSPATH ${CLASSPATH}:$JAXB_HOME/jakarta.activation.jar:$JAXB_HOME/jakarta.xml.bind-api.jar:$JAXB_HOME/jaxb-impl.jar
 
 ENV PATH ${PATH}:${KOTLIN_HOME}/bin:${ANDROID_HOME}/cmdline-tools:${ANDROID_HOME}/cmdline-tools/bin:${ANDROID_HOME}/platform-tools
 
