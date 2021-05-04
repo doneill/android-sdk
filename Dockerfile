@@ -9,7 +9,7 @@ FROM openjdk:11
 LABEL maintainer "dev@jdoneill.com"
 
 ENV ANDROID_HOME=/opt/android-sdk
-ENV ANDROID_SDK_ROOT=${ANDROID_HOME}/cmdline-tools/latest
+#ENV ANDROID_SDK_ROOT=${ANDROID_HOME}/cmdline-tools/latest
 ENV ANDROID_VERSION=29
 ENV ANDROID_BUILD_TOOLS_VERSION=29.0.2
 ENV KOTLIN_HOME /opt/kotlinc
@@ -30,8 +30,10 @@ ARG ANDROID_SDK_VERSION="6858069_latest"
 RUN mkdir -p ${ANDROID_HOME} && \
     cd ${ANDROID_HOME} && \
     wget -q https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_VERSION}.zip -O android_tools.zip && \
-    unzip android_tools.zip && \
+    unzip android_tools.zip -d ${ANDROID_HOME}/cmdline-tools && \
     rm android_tools.zip
+
+RUN mv ${ANDROID_HOME}/cmdline-tools/cmdline-tools ${ANDROID_HOME}/cmdline-tools/latest
 
 # JAXB APIs removed from Java 11, Android sdkmanager requires it
 # Download jaxb
@@ -42,7 +44,7 @@ RUN mkdir -p ${ANDROID_HOME} && \
 
 # ENV CLASSPATH ${CLASSPATH}:$JAXB_HOME/jakarta.activation.jar:$JAXB_HOME/jakarta.xml.bind-api.jar:$JAXB_HOME/jaxb-impl.jar
 
-ENV PATH ${PATH}:${KOTLIN_HOME}/bin:${ANDROID_SDK_ROOT}:${ANDROID_SDK_ROOT}/bin:${ANDROID_HOME}/platform-tools
+ENV PATH ${PATH}:${KOTLIN_HOME}/bin:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools
 
 # Accept Android SDK licenses
 RUN yes | sdkmanager --licenses
